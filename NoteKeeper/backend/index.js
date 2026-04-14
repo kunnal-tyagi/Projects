@@ -3,9 +3,13 @@ const dotenv=require('dotenv')
 const { default: mongoose } = require('mongoose')
 dotenv.config()
 const app=express()
-
+const {router}=require("./routes/Note.routes")
+app.use(express.json())
 try{
   mongoose.connect(process.env.URL);
+  // console.log(process.env.URL);
+  
+  
   console.log("Connected to Database");
   
 }catch(error){
