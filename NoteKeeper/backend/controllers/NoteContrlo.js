@@ -12,8 +12,8 @@ exports.createNote=async(req,res)=>{
 };
 
 exports.updateNote=async(req,res)=>{
-    const note=await Node.findOneAndUpdate({
-        _id:req.params.id;
+    const note=await Note.findOneAndUpdate({
+        _id:req.params.id,
         user:req.user._id
     },
 req.body,

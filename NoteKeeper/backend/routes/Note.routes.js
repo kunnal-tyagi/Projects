@@ -1,6 +1,7 @@
-const express=require('express')
-const router=express.Router()
-const {CreateNote}=require('../controllers/NoteContrlo.js')
-router.post("/CreateNote",CreateNote)
+const router=require('express').Router()
+const {protect}=require('../middleware/authMiddleware')
+const {getNotes,createNote,updateNote,deleteNote}=require('../controllers/NoteContrlo')
 
-module.exports=router
+router.route('/').get(protect,getNotes).post(protect,createNote);
+router.route('/:id').put(protect,updateNote).delete(protect,deleteNote);
+module.exports=router;
